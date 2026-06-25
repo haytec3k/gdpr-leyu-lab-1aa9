@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leyu 专题 · 日常检索与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f4f6fa;
+      color: #1e293b;
+      line-height: 1.65;
+    }
+
+    /* 深色头图 hero */
+    .hero {
+      background: linear-gradient(135deg, #0b1121 0%, #1a263a 100%);
+      color: #e6edf5;
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(30, 130, 210, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      font-weight: 350;
+      color: #b0c4de;
+      max-width: 600px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1rem;
+    }
+
+    /* 正文内容区——浅色卡片式 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .intro-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 2.2rem 1.8rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+
+    .intro-block p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 1.8rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eef2f7;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+      color: #1e293b;
+      border-left: 4px solid #3b6cb0;
+      padding-left: 0.8rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .card li::before {
+      content: "▹";
+      color: #3b6cb0;
+      font-weight: 600;
+    }
+
+    .faq-abridged {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #eaf0f6;
+    }
+
+    .faq-abridged details {
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-abridged summary {
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.6rem 0;
+      color: #1e293b;
+      transition: color 0.15s;
+    }
+
+    .faq-abridged summary:hover {
+      color: #3b6cb0;
+    }
+
+    .faq-abridged p {
+      margin: 0.3rem 0 0.8rem 1.2rem;
+      color: #475569;
+    }
+
+    .footnote-area {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 2rem 2rem;
+      text-align: center;
+      border: 1px solid #e6edf5;
+      margin-top: 1.8rem;
+    }
+
+    .footnote-area p {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+
+    .footnote-area a {
+      color: #1e4a7a;
+      background: #eef3fb;
+      padding: 0.1rem 0.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .footnote-area a:hover {
+      background: #d6e3f5;
+      text-decoration: underline;
+    }
+
+    .inline-link {
+      color: #1f509a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dotted #98b6d9;
+      transition: border 0.2s;
+    }
+
+    .inline-link:hover {
+      border-bottom: 1px solid #1f509a;
+    }
+
+    /* 页尾 */
+    .site-footer {
+      margin-top: 1.2rem;
+      padding: 2rem 1.5rem 2.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+      }
+      .intro-block {
+        padding: 1.8rem 1.5rem;
+      }
+      .card {
+        padding: 1.4rem;
+      }
+      .faq-abridged {
+        padding: 1.2rem 1.2rem;
+      }
+      .container {
+        padding: 1.8rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 hero -->
+  <header class="hero">
+    <h1>查询·对照·延伸</h1>
+    <div class="subtitle">
+      从日常信息检索到专题背景梳理 —— 面向习惯多源对照的阅读方式
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 三段自然介绍：背景说明 + 场景 + 延伸阅读节奏 -->
+    <section class="intro-block">
+      <p>网络信息环境日趋复杂，日常查询往往需要跨越多个页面、反复核对来源与时效。对于习惯在浏览器中同时打开数个标签页的用户而言，如何快速定位到可信、结构清晰的参考页面，是提升检索效率的关键。无论是核对术语释义，还是了解某个平台的发展脉络，都意味着需要一套可被反复引用的信息锚点。</p>
+      <p>以 <strong>leyu</strong> 相关主题为例，从基础页面出发，可以逐步延伸至功能说明、版本记录以及关联的知识条目。这种从单一入口展开的阅读路径，要求页面本身具备清晰的层级与稳定的表述，以便在不同设备、不同场景下都能提供一致的对照体验。以下是针对这类检索与延伸场景梳理的几个侧面。</p>
+    </section>
+
+    <!-- 两个卡片：特点 + 适用场景（自然段补充） -->
+    <div class="grid-2">
+      <div class="card">
+        <h3>信息锚点与结构</h3>
+        <ul>
+          <li>明确的页面标题与摘要，方便多标签对照时快速定位</li>
+          <li>段落之间逻辑递进，减少跳转阅读时丢失上下文</li>
+          <li>避免过度装饰，使注意力集中在内容本身</li>
+          <li>一致的术语与连接方式，便于延伸查询</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>典型检索场景</h3>
+        <ul>
+          <li>同时打开多个参考页，进行功能与描述对比</li>
+          <li>从一段简短介绍出发，延伸阅读更深入的背景说明</li>
+          <li>在移动设备与桌面端之间切换，需要版面自适应</li>
+          <li>定期回查同一页面，确认内容是否有版本更新</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ摘要（折叠形态） 自然穿插 -->
+    <div class="faq-abridged">
+      <details>
+        <summary>如何利用这个页面进行对照阅读？</summary>
+        <p>建议将本页作为起始锚点，同时打开 <a href="https://china-cnwebs-leyu.com" class="inline-link">leyu</a> 主页面，在并排视图中比较信息结构、术语一致性与内容粒度。你也可以将本页的几个段落与主站对应章节进行逐段对照。</p>
+      </details>
+      <details>
+        <summary>延伸阅读时需要注意什么？</summary>
+        <p>留意每个页面的最近更新日期与引用来源。不同层级的页面可能在细节详略上有所不同，对照时以最新版本为准。本页旨在提供一种中立的检索框架，不替代任何官方说明。</p>
+      </details>
+      <details>
+        <summary>为什么强调“日常查询”的角度？</summary>
+        <p>许多用户每天都会进行多次快速信息核实，例如检查某个功能是否调整、某个描述是否更新。一个结构稳定的介绍页可以减少重复定位的时间，让查询回归查询本身。</p>
+      </details>
+    </div>
+
+    <!-- 页尾访问提示（自然嵌入 a 标签） -->
+    <div class="footnote-area">
+      <p>如果你正在寻找与「leyu」相关的综合介绍与背景说明，可以从 <a href="https://china-cnwebs-leyu.com">leyu</a> 页面入手，逐步展开对照阅读。该页面提供了较为完整的主题脉络，适合作为多标签检索的起点。</p>
+      <p style="margin-top: 0.6rem; font-size: 0.93rem; color: #5f6c80;">也可将此页收藏，作为后续延伸查询时的参考索引。</p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>杂志专题式 · 日常查询与延伸阅读 · 信息密度优先</span>
+  </footer>
+</body>
+</html>
