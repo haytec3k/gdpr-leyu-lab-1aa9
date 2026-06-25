@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · leyu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* hero 头部 ———— 简洁、留白、低对比 */
+        .hero {
+            margin-bottom: 3rem;
+            padding: 2.8rem 2rem 2rem 2rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e7eaee;
+            text-align: center;
+        }
+
+        .hero small {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #7c8798;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            background: #f0f2f4;
+            padding: 0.15rem 0.9rem;
+            border-radius: 30px;
+        }
+
+        .hero h1 {
+            font-size: 2.9rem;
+            font-weight: 350;
+            letter-spacing: -0.02em;
+            color: #1c2636;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 i {
+            font-style: normal;
+            background: #eef1f5;
+            padding: 0 0.2rem;
+            color: #1f2a3b;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #4b596c;
+            max-width: 480px;
+            margin: 0.2rem auto 0;
+            border-top: 1px solid #eef0f3;
+            padding-top: 1.2rem;
+        }
+
+        /* 正文卡片 ———— 柔和分区 */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #e7eaee;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.01);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1f2b3b;
+            letter-spacing: -0.01em;
+            border-left: 3px solid #a4b5cc;
+            padding-left: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 380;
+            margin: 1.6rem 0 0.5rem 0;
+            color: #2a384b;
+        }
+
+        .card p {
+            margin-bottom: 1.1rem;
+            color: #2d3b4e;
+            font-size: 1rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 引用 / 标注提醒 */
+        .callout {
+            background: #f6f8fa;
+            border-left: 4px solid #9dafc9;
+            padding: 1.3rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            color: #273445;
+            box-shadow: inset 0 0 0 1px #eef1f5;
+        }
+
+        .callout strong {
+            font-weight: 500;
+            color: #1d2a3b;
+        }
+
+        .callout a {
+            color: #1f3857;
+            text-decoration: none;
+            border-bottom: 1px dashed #b3c3d9;
+            transition: border 0.2s;
+        }
+
+        .callout a:hover {
+            border-bottom: 2px solid #1f3857;
+        }
+
+        .quiet-link {
+            color: #315177;
+            text-decoration: none;
+            border-bottom: 1px solid #cfdbe9;
+            transition: border 0.15s;
+        }
+
+        .quiet-link:hover {
+            border-bottom: 2px solid #315177;
+        }
+
+        /* 访问句 ———— 日常提醒 */
+        .visit-note {
+            background: #ffffff;
+            border: 1px solid #e3e8ef;
+            border-radius: 60px;
+            padding: 0.9rem 2rem;
+            display: inline-block;
+            font-size: 0.95rem;
+            color: #3e5066;
+            margin-top: 0.8rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .visit-note a {
+            color: #1f3857;
+            font-weight: 450;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd6e6;
+        }
+
+        .visit-note a:hover {
+            border-bottom: 2px solid;
+        }
+
+        /* FAQ 摘要 ———— 简洁折叠感 */
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 450;
+            color: #1a283c;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.95rem;
+            color: #3c4e64;
+        }
+
+        .faq-item .a a {
+            color: #2c4a6e;
+            text-decoration: none;
+            border-bottom: 1px dotted #b6c7dd;
+        }
+
+        .faq-item .a a:hover {
+            border-bottom: 1px solid #1b3149;
+        }
+
+        .divider-light {
+            margin: 1.8rem 0 1.4rem;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dce2ea, transparent);
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem 1.5rem;
+            }
+            .visit-note {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.9rem;
+                border-radius: 40px;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.8rem 0 1rem;
+            font-size: 0.85rem;
+            color: #6c7e94;
+            border-top: 1px solid #e2e7ed;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #3a5575;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 简洁标题 -->
+    <div class="hero">
+        <small>📌 收藏夹 · 再次打开</small>
+        <h1>回到 <i>leyu</i> 的安静角落</h1>
+        <div class="sub">一篇关于“持续关注”的随笔</div>
+    </div>
+
+    <!-- 正文 1 再次访问的体验 -->
+    <div class="card">
+        <h2>为什么我总想回来看看</h2>
+        <p>不知道从什么时候开始，浏览器里收藏的网站越来越多，但真正愿意反复打开的并不多。而<a href="https://gdpr-leyu.com.cn" class="quiet-link">leyu</a>是其中一个例外——它不吵闹，不频繁推送，也没有那种“你必须每天登录”的焦虑感。就像一本放在案头的笔记本，随时翻开，总有一些熟悉的、安静的页面在等着你。</p>
+        <p>有时候只是中午休息时点开，看看有没有新的内容更新；有时候隔了两三周再回来，发现版式还是那个版式，但读到的几段话却带来了完全不同的理解。这种感觉很奇妙——一个网站居然可以像老朋友一样，既保持距离，又不疏远。</p>
+    </div>
+
+    <!-- 正文 2 收藏与习惯 -->
+    <div class="card">
+        <h2>收藏是标记，回访是习惯</h2>
+        <p>我把 <strong>leyu</strong> 放在书签栏最靠前的位置，和天气预报、邮箱放在一起。不是因为有什么紧迫的事情要处理，而是因为有时候只是想找一个干净、不被算法吞噬的页面待一会。那种感觉很像逛一家独立书店——没有推销，没有弹窗，只有你自己决定停留多久。</p>
+        <div class="callout">
+            <strong>💡 一个提醒：</strong> 如果你也和一样，偶尔想起某个站点却发现找不到了，不妨现在就为 <a href="https://gdpr-leyu.com.cn">leyu</a> 加一个书签。浏览器收藏夹是最好的“再次见面”工具，胜过任何记忆。
+        </div>
+        <p>我通常会在晚上把手机放到一边，用笔记本打开它，在安静的页面里慢慢往下滑。不是所有的内容都要求你立刻回应，而这种“不要求回应”的体验，反而让我更愿意持续关注。</p>
+    </div>
+
+    <!-- 正文 3 关注的状态 -->
+    <div class="card">
+        <h2>持续关注是一种选择</h2>
+        <p>互联网上大多数东西都在争夺你的下一次点击，但持续关注则是一种更温和的关系——你知道它在那里，它也知道你会回来。没有未读数字，没有小红点，每一次打开都是一次全新的、不带负担的对话。</p>
+        <p>我喜欢的节奏是：每过一段时间，点开 <a href="https://gdpr-leyu.com.cn" class="quiet-link">leyu</a>，看看页面又有了哪些细微的调整，或者某个角落的表述是否有了变化。它像一棵慢慢生长的树，每次路过都能发现新的枝桠，但树本身还是那棵树。</p>
+        <!-- 访问句 -->
+        <div class="visit-note">
+            🕊️ 如果你也收藏过它，不妨今天再打开看看—— <a href="https://gdpr-leyu.com.cn">leyu</a>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 —— 日常小问题 -->
+    <div class="card">
+        <h2>一些你可能想问的</h2>
+        <div class="faq-item">
+            <div class="q">◈ 我上次访问是几个月前，现在内容变了吗？</div>
+            <div class="a">核心方向没有变，但页面细节和表达会随着时间有所打磨。重新打开<a href="https://gdpr-leyu.com.cn" class="quiet-link">leyu</a>，也许你会注意到之前没留意的段落。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">◈ 需要注册或者登录才能看吗？</div>
+            <div class="a">不需要。它就像一个公开的便签，你随时可以访问，不需要留下任何信息。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">◈ 怎么持续关注又不被打扰？</div>
+            <div class="a">收藏夹 + 偶尔主动访问就是最好的方式。它不会给你发邮件，也不会推送通知。只有你想起它的时候，它才出现。</div>
+        </div>
+        <hr class="divider-light">
+        <p style="font-size: 0.95rem; color: #42576f;">以上是基于普通访客的日常感受整理，不构成任何建议或承诺。每个人的访问体验可能略有不同。</p>
+    </div>
+
+    <!-- footer 极简 -->
+    <footer>
+        再次回到 <a href="https://gdpr-leyu.com.cn">leyu</a> · 收藏即约定
+    </footer>
+
+</div>
+</body>
+</html>
